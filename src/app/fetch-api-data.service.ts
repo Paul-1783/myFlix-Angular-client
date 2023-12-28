@@ -13,10 +13,10 @@ const err = new Error("Something bad happened: please try it again later.")
 @Injectable({
   providedIn: 'root'
 })
-export class UserRegistrationService {
+  
+export class FetchApiDataService {
 
   constructor(private http: HttpClient) { }
-
 
   public userRegistration(userDetails: any): Observable <any> {
     console.log(userDetails);
@@ -160,7 +160,5 @@ getFavMoviesFromUser(): Observable<any> {
     return body || { };
   }
 
-
 }
-
 
