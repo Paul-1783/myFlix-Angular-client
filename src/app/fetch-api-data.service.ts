@@ -41,7 +41,7 @@ export class FetchApiDataService {
     return this.http.post(apiUrl + "login", userDetails).pipe(catchError(this.handleError))
   }
 
-  getAllMovies(): Observable<any> {
+getAllMovies(): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http.get(apiUrl + "movies", {headers: new HttpHeaders(
       {
@@ -110,9 +110,9 @@ getFavMoviesFromUser(): Observable<any> {
     );
 }
 
-  addMovToFavMovies(userName: string, movieId: string): Observable <any> {
+  addMovToFavMovies(userName: string, movieId: string): Observable<any> {
     const token = localStorage.getItem('token');
-    return this.http.post(apiUrl + "/users/" + userName + "/movies/" + movieId, {headers: new HttpHeaders(
+    return this.http.post(apiUrl + `${encodeURIComponent(userName)}/movies/${encodeURIComponent(movieId)}`, {headers: new HttpHeaders(
       {
         Authorization: 'Bearer ' + token,
       })}).pipe(
