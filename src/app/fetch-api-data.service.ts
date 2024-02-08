@@ -110,10 +110,15 @@ getFavMoviesFromUser(): Observable<any> {
     );
 }
 
-  addMovToFavMovies(userName: string, movieId: string): Observable<any> {
+  addMovToFavMovies(userName: string, movieId: string): void {
     const token = localStorage.getItem('token');
-    return this.http.post(apiUrl + `${encodeURIComponent(userName)}/movies/${encodeURIComponent(movieId)}`, {headers: new HttpHeaders(
+    // console.log(apiUrl + `users/${encodeURIComponent(userName)}/movies/${encodeURIComponent(movieId)}`)
+    console.log(apiUrl + "users/" + userName + "/movies/" + movieId);
+    this.http.post(JSON.stringify(apiUrl + "users/" + userName + "/movies/" +  movieId),
       {
+        headers: new HttpHeaders(
+        {
+        "Content-Type": "application/json",
         Authorization: 'Bearer ' + token,
       })}).pipe(
       map(this.extractResponseData),

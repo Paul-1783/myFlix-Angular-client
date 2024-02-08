@@ -56,8 +56,9 @@ export class MovieCardComponent implements OnInit{
   }
 
   addToFavs(movie: any): void{
-    let userName = localStorage.getItem("user");
+    let userName = localStorage.getItem("user")
     if (userName) {
+      userName = userName.replace(/^"(.*)"$/, '$1');
       this.fetchMovies.addMovToFavMovies(userName, movie._id)
       this.getMovies();
     }
