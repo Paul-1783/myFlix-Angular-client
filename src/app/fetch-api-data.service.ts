@@ -41,11 +41,6 @@ export class FetchApiDataService {
     return this.http.post(apiUrl + "login", userDetails).pipe(catchError(this.handleError))
   }
 
-  logout(): void {
-    
-  }
-
-
   getAllMovies(): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http.get(apiUrl + "movies", {headers: new HttpHeaders(

@@ -9,7 +9,7 @@ import { FetchApiDataService } from "../fetch-api-data.service"
 })
 export class ProfilePageComponent implements OnInit{
 
-  @Input() loggedInUser = {
+  @Input() loggedInUser = { _id: "",
     username: "", password: "", email: "", birthday: ""
   };
 
@@ -20,8 +20,10 @@ export class ProfilePageComponent implements OnInit{
 
   ngOnInit(): void {
     const test =  localStorage.getItem("user") || "{}"  
-    console.log(test)
-    console.log(this.fetchApiData.getUser(test))
+    this.fetchApiData.getUser(test).subscribe((resp: any) => {
+      this.loggedInUser = resp;
+      console.log(this.loggedInUser.email)
+    })
 
   }
 }
