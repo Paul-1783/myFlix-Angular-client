@@ -19,6 +19,9 @@ export class ProfilePageComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    const test = this.fetchApiData.getUser(localStorage.getItem("user") || "" )
+    const test =  localStorage.getItem("user") || "{}"  
+    console.log(test)
+    console.log(this.fetchApiData.getUser(test))
+
   }
 }
