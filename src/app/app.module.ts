@@ -19,10 +19,10 @@ import { UserLoginFormComponent } from './user-login-form/user-login-form.compon
 import { MovieCardComponent } from './movie-card/movie-card.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
-
-
+import {MatToolbarModule} from '@angular/material/toolbar'; 
 import { MatIconModule } from '@angular/material/icon';
 import { InfoPresentationPageComponent } from './info-presentation-page/info-presentation-page.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 const appRoutes: Routes = [
   { path: "welcome", component: WelcomePageComponent },
@@ -39,7 +39,8 @@ const appRoutes: Routes = [
     MovieCardComponent,
     WelcomePageComponent,
     ProfilePageComponent,
-    InfoPresentationPageComponent
+    InfoPresentationPageComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -55,6 +56,7 @@ const appRoutes: Routes = [
     FormsModule,
     RouterModule.forRoot(appRoutes),
     MatIconModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

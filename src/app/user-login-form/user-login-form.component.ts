@@ -39,7 +39,7 @@ export class UserLoginFormComponent   implements OnInit {
         localStorage.setItem("token", result.token);
         this.dialogRef.close(); // This will close the modal on success!
         this.router.navigate(['movies']);
-        console.log(result);
+        console.log("result: ",result);
         this.snackBar.open(result, 'OK', {
         duration: 2000
      });

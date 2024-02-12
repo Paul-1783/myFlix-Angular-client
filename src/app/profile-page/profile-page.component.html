@@ -1,1 +1,33 @@
-<p>profile-page works!</p>
+<p>
+    <span>
+        User Profile {{loggedInUser.username}}
+    </span>
+</p>
+
+<form class="form">
+    <p>
+        <mat-form-field class="example-full-width">
+            <mat-label>Name:</mat-label>
+            <input matInput [(ngModel)]="loggedInUser.username" placeholder="Username" type="text" name="username">
+            <mat-hint align="start">Current Name: {{loggedInUser.username}} </mat-hint>
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field class="example-full-width">
+            <mat-label>Password:</mat-label>
+            <input matInput [(ngModel)]="loggedInUser.password" placeholder="Password" type="text" name="password">
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field class="example-full-width">
+            <mat-label>Email Address:</mat-label>
+            <input matInput [(ngModel)]="loggedInUser.email" placeholder="Email" type="text" name="email">
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field class="example-full-width">
+            <mat-label>Birthday:</mat-label>
+            <input matInput [(ngModel)]="loggedInUser.birthday" placeholder="Birthday" type="text" name="birthday">
+        </mat-form-field>
+    </p>
+</form>

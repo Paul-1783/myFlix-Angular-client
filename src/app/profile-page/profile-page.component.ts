@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output} from '@angular/core';
 import { FetchApiDataService } from "../fetch-api-data.service"
 
 
@@ -8,10 +8,17 @@ import { FetchApiDataService } from "../fetch-api-data.service"
   styleUrls: ['./profile-page.component.scss']
 })
 export class ProfilePageComponent implements OnInit{
+
+  @Input() loggedInUser = {
+    username: "", password: "", email: "", birthday: ""
+  };
+
   listOfFavMovies: any[] = [];
-  constructor(getUser: FetchApiDataService) { }
+
+  constructor(public fetchApiData: FetchApiDataService) { 
+  }
 
   ngOnInit(): void {
-    
+    const test = this.fetchApiData.getUser(localStorage.getItem("user") || "" )
   }
 }

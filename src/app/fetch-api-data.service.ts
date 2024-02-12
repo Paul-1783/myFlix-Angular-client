@@ -37,11 +37,16 @@ export class FetchApiDataService {
   }
 
   public userLogin(userDetails: any):Observable<any> {
-    console.log(userDetails);
+    // console.log(userDetails);
     return this.http.post(apiUrl + "login", userDetails).pipe(catchError(this.handleError))
   }
 
-getAllMovies(): Observable<any> {
+  logout(): void {
+    
+  }
+
+
+  getAllMovies(): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http.get(apiUrl + "movies", {headers: new HttpHeaders(
       {
