@@ -21,7 +21,8 @@ export class ProfilePageComponent implements OnInit{
   constructor(public fetchApiData: FetchApiDataService,
               public dialog: MatDialog,
               public snackBar: MatSnackBar,
-              public movieCard: MovieCardComponent) { 
+    // public movieCard: MovieCardComponent
+  ) { 
   }
 
   ngOnInit(): void {
@@ -32,9 +33,9 @@ export class ProfilePageComponent implements OnInit{
       this.loggedInUser.email = resp.email
       this.loggedInUser.birthday = formatDate(resp.birthday, 'yyyy-MM-dd', 'en-US', 'UTC+0');
       this.loggedInUser.favorite_movies = resp.favorite_movies;
-      const allMovies: any = this.movieCard.getMovies();
-      this.movies = allMovies.filter((movie: any) => resp.favorite_movies.includes(movie._id))
-      console.log(this.movies)
+      // const allMovies: any = this.movieCard.getMovies();
+      // this.movies = allMovies.filter((movie: any) => resp.favorite_movies.includes(movie._id))
+      // console.log(this.movies)
     })
     // this.dialog.open(MovieCardComponent, { width: '400px', height: '400px', data: { movies: this.loggedInUser.favorite_movies } });
   }

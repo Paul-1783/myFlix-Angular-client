@@ -1,0 +1,36 @@
+div {
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+ }
+
+ h1 {
+    color: var(--secondary-text-color)
+ }
+
+.field {
+   display: flex;
+   margin-bottom: 3.6em;
+}
+
+ mat-hint {
+   min-width: 210px;
+   margin-left: -0.8em;
+   padding: 1.2 em auto;
+   background-color: var(--secondary-bg-color);
+   color: var(--secondary-text-color)
+ }
+
+ .form{
+    display: flex;
+    flex-direction: column;
+ }
+
+input {
+   color: var(--secondary-text-color);
+}
+
+button {
+   
+}

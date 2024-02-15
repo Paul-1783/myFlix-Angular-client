@@ -1,0 +1,20 @@
+img {
+    max-width: 400 px;
+    max-height: 400px;
+}
+
+mat-card {
+    background-color: var(--primary-bg-color);
+    color: var(--secondary-text-color);
+    margin: 10px;
+}
+
+mat-card-header {
+    font-size: var(xxx-large);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25% ;
+    grid-template-rows: 20% 20% 20% 20% 20%;
+}

@@ -1,36 +1,30 @@
-<p>
-    <span>
+<div>
+    <h1>
         User Profile {{loggedInUser.username}}
-    </span>
-</p>
+    </h1>
 
-<form class="form">
-    <p>
-        <mat-form-field class="example-full-width">
-            <mat-label>Name:</mat-label>
+    <form class="form">
+        <mat-form-field class="field">
+            <mat-label>New Name:</mat-label>
             <input matInput [(ngModel)]="loggedInUser.username" placeholder="Username" type="text" name="username">
             <mat-hint align="start">Current Name: {{loggedInUser.username}} </mat-hint>
         </mat-form-field>
-    </p>
-    <p>
-        <mat-form-field class="example-full-width">
-            <mat-label>Password:</mat-label>
+        <mat-form-field>
+            <mat-label>New Password:</mat-label>
             <input matInput [(ngModel)]="loggedInUser.password" placeholder="Password" type="text" name="password">
         </mat-form-field>
-    </p>
-    <p>
-        <mat-form-field class="example-full-width">
-            <mat-label>Email Address:</mat-label>
+        <mat-form-field class="field">
+            <mat-label>New Email Address:</mat-label>
             <input matInput [(ngModel)]="loggedInUser.email" placeholder="Email" type="text" name="email">
+            <mat-hint align="start">Current Email Address: {{loggedInUser.email}} </mat-hint>
         </mat-form-field>
-    </p>
-    <p>
-        <mat-form-field class="example-full-width">
-            <mat-label>Birthday:</mat-label>
+        <mat-form-field class="field">
+            <mat-label>New Birthday:</mat-label>
             <input matInput [(ngModel)]="loggedInUser.birthday" placeholder="Birthday" type="text" name="birthday">
+            <mat-hint align="start">Current Name: {{loggedInUser.birthday}} </mat-hint>
         </mat-form-field>
-    </p>
-    <button (click)="editUser()">Edit Profile</button>
-</form>
-
-<!-- <app-movie-card></app-movie-card> -->
+        <button (click)="editUser()">Edit Profile</button>
+    </form>
+</div>
+<p>
+    <!-- <app-movie-card></app-movie-card> -->

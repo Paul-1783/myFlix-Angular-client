@@ -36,4 +36,38 @@ $myFlix-Angular-client-theme: mat.define-light-theme((
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; 
+      font-family: "Century Schoolbook", "Helvetica Neue", sans-serif; 
+      background-color: var(--primary-bg-color);
+      color: var(--primary-text-color);
+      letter-spacing: 0.1em;
+      font-size: 1.2em;
+      font-weight: 500;
+    }
+
+
+:root {
+    --primary-bg-color: #7FC875;
+    --secondary-bg-color: #00ACBA;
+    --tertiary-bg-color: #FFAF49;
+    --primary-text-color: #FFF;
+    --secondary-text-color: #5F005F;
+
+}
+
+
+button, mat-icon {
+   background-color: var(--secondary-bg-color);
+   color: var(--primary-text-color);
+   font-size: 1.2em;
+   padding: 10px 10px;
+   transition: 0.5s;
+   text-transform: uppercase;
+   border-radius: 8px;
+}
+
+button:hover, mat-icon:hover {
+    background-color: var(--tertiary-bg-color);
+  letter-spacing: 0.15em;
+  box-shadow: 0 0  15px var(--tertiary-bg-color);
+}

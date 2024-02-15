@@ -1,5 +1,5 @@
 <!-- src/app/user-registration-form/user-registration-form.component.html -->
-<mat-card>
+<mat-card class="info">
     <mat-card-header>
         <mat-card-title>{{data?.name}}</mat-card-title>
     </mat-card-header>
@@ -7,7 +7,7 @@
         <p>{{data?.description}}</p>
     </mat-card-content>
     <mat-card-actions>
-        <button mat-raised-button (click)="backToMovieList()" color="primary">
+        <button (click)="backToMovieList()">
             return to movie list
         </button>
     </mat-card-actions>
