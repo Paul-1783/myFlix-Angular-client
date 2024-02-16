@@ -31,22 +31,22 @@ export class UserLoginFormComponent   implements OnInit {
   ngOnInit(): void {
   }
 
-  loginUser(): void {
-    this.fetchApiData.userLogin(this.userData).subscribe({ 
-      next: (result) => {
-        // Logic for a successful user login goes here! (To be implemented)
-        localStorage.setItem("user", JSON.stringify(this.userData.username));
-        localStorage.setItem("token", result.token);
-        this.dialogRef.close(); // This will close the modal on success!
-        this.router.navigate(['movies']);
-        console.log("result: ",result);
-        this.snackBar.open(result, 'OK', {
+loginUser(): void {
+    this.fetchApiData.userLogin(this.userData).subscribe((result) => {
+      // Logic for a successful user registration goes here! (To be implemented)
+      this.dialogRef.close();
+      this.snackBar.open('user logged in successfully!', 'OK', {
         duration: 2000
-     });
-    },
-      error: (e) => console.error(e),
-      complete: () => console.info('complete')
+      });
 
+      localStorage.setItem('user', JSON.stringify(result.user));
+      localStorage.setItem('token', result.token);
+      this.router.navigate(['movies']);
+    }, (response) => {
+      this.snackBar.open(response, 'OK', {
+        duration: 2000
+      });
     });
   }
+
 }

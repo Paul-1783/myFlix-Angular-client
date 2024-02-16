@@ -112,7 +112,7 @@ getFavMoviesFromUser(): Observable<any> {
 
   addMovToFavMovies(userName: string, movieId: string): void {
     const token = localStorage.getItem('token');
-    // console.log(apiUrl + `users/${encodeURIComponent(userName)}/movies/${encodeURIComponent(movieId)}`)
+    console.log(apiUrl + `users/${encodeURIComponent(userName)}/movies/${encodeURIComponent(movieId)}`)
     console.log(apiUrl + "users/" + userName + "/movies/" + movieId);
     this.http.post(JSON.stringify(apiUrl + "users/" + userName + "/movies/" +  movieId),
       {
