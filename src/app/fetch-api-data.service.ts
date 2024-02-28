@@ -110,25 +110,27 @@ getFavMoviesFromUser(): Observable<any> {
     );
 }
 
-  addMovToFavMovies(userName: string, movieId: string): void {
+  addMovToFavMovies(userName: string, movieId: string): Observable<any> {
     const token = localStorage.getItem('token');
-    console.log(apiUrl + `users/${encodeURIComponent(userName)}/movies/${encodeURIComponent(movieId)}`)
-    console.log(apiUrl + "users/" + userName + "/movies/" + movieId);
-    this.http.post(JSON.stringify(apiUrl + "users/" + userName + "/movies/" +  movieId),
+    return this.http.post(apiUrl + `users/${encodeURIComponent(userName)}/movies/${encodeURIComponent(movieId)}`, {},
       {
         headers: new HttpHeaders(
         {
-        "Content-Type": "application/json",
-        Authorization: 'Bearer ' + token,
-      })}).pipe(
+        Authorization: 'Bearer ' +  token,
+          })
+        , responseType: 'text'
+      }).pipe(
       map(this.extractResponseData),
       catchError(this.handleError)
     )
   }
   
-  editUser(userName: string, data: string ): Observable<any>{
+  editUser(userName: string, data: any): Observable<any>{
+    
+    console.log("here: ", apiUrl + "users/" + userName)
+    console.log("dataobject: ", data)
     const token = localStorage.getItem('token');
-    return this.http.put(apiUrl + "users/" + userName, JSON.stringify(data), {headers: new HttpHeaders(
+    return this.http.put(apiUrl + "users/" + userName, data, {headers: new HttpHeaders(
       {
         Authorization: 'Bearer ' + token,
        })}).pipe(
@@ -137,9 +139,11 @@ getFavMoviesFromUser(): Observable<any> {
     )
   }
 
-  deleteUser(userName: string) {
+  deleteUser(userName: string): Observable<any> {
+    console.log("url: ", apiUrl + "users/" + userName)
+
     const token = localStorage.getItem('token');
-    return this.http.delete(apiUrl + "users/" + userName, {headers: new HttpHeaders(
+    return this.http.delete(apiUrl + "users/" + userName, {responseType: 'text',headers: new HttpHeaders( //why responseType necessary?
       {
         Authorization: 'Bearer ' + token,
       })}).pipe(
@@ -150,7 +154,7 @@ getFavMoviesFromUser(): Observable<any> {
 
   deleteMovieFromFavorites(movieId: string, userName: string){
     const token = localStorage.getItem('token');
-    return this.http.delete(apiUrl + "/users/" + userName + "/movies/" + movieId, {headers: new HttpHeaders(
+    return this.http.delete(apiUrl + "users/" + userName + "/movies/" + movieId, {headers: new HttpHeaders(
       {
         Authorization: 'Bearer ' + token,
       })}).pipe(

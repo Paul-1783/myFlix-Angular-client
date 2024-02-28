@@ -3,7 +3,7 @@ import { ProfilePageComponent } from "../profile-page/profile-page.component";
 import { FetchApiDataService } from "../fetch-api-data.service"
 import { MatDialog } from '@angular/material/dialog';
 import {InfoPresentationPageComponent} from "../info-presentation-page/info-presentation-page.component"
-
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-movie-card',
   templateUrl: './movie-card.component.html',
@@ -13,7 +13,7 @@ export class MovieCardComponent implements OnInit{
   movies: any[] = [];
   data = {name: "", description: ""}
 
-  constructor(public fetchMovies: FetchApiDataService, public dialog: MatDialog) { }
+  constructor(public fetchMovies: FetchApiDataService, public dialog: MatDialog, public snackBar : MatSnackBar) { }
   
   ngOnInit(): void {
     this.getMovies();
@@ -23,7 +23,7 @@ export class MovieCardComponent implements OnInit{
     this.fetchMovies.getAllMovies().subscribe((resp: any) => {
       this.movies = resp;
       console.log(this.movies);
-      return this.movies;
+      // return this.movies;
     } )
   }
 
@@ -56,17 +56,17 @@ export class MovieCardComponent implements OnInit{
   }
 
   addToFavs(movie: any): void{
-    let userName = localStorage.getItem("user")
-    if (userName) {
-      userName = userName.replace(/^"(.*)"$/, '$1');
-      this.fetchMovies.addMovToFavMovies(userName, movie._id)
-      this.getMovies();
+    let user = JSON.parse(localStorage.getItem("user")|| "{}");
+    if (user) {
+    let userName = user.username;
+    this.fetchMovies.addMovToFavMovies(userName, movie._id).subscribe(() => {
+        this.snackBar.open('Movie added to favorites', 'OK', {
+          duration: 2000,
+        });
+      });;
+    user.favorite_movies.push(movie._id)
+    localStorage.setItem("user", JSON.stringify(user));
+    console.log("User: ", localStorage.getItem("user"))
     }
-
-    this.dialog.open(InfoPresentationPageComponent, {
-      width: "280px", data: {
-        name: "movie has been added to favorites."
-      }
-    })
   }
 }

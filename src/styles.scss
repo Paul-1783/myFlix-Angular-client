@@ -67,7 +67,31 @@ button, mat-icon {
 }
 
 button:hover, mat-icon:hover {
-    background-color: var(--tertiary-bg-color);
+  background-color: var(--tertiary-bg-color);
   letter-spacing: 0.15em;
   box-shadow: 0 0  15px var(--tertiary-bg-color);
 }
+
+
+// img {
+//   max-width: 350px;
+//   max-height: 400px;
+// }
+
+// mat-card {
+//   background-color: var(--primary-bg-color);
+//   color: var(--secondary-text-color);
+//   margin-bottom: 10px;
+//   // display: flex 1 1 auto;
+// }
+
+// mat-card-header {
+//   font-size: var(xxx-large);
+// }
+
+// .grid {
+//   display: grid;
+//   grid-template-columns: 25% 25% 25% 25%;
+//   grid-template-rows: 33% 33 33% 1%;
+
+// }
