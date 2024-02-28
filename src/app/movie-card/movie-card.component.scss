@@ -1,0 +1,22 @@
+img {
+    max-width: 350px;
+    max-height: 400px;
+}
+
+mat-card {
+    background-color: var(--primary-bg-color);
+    color: var(--secondary-text-color);
+    margin-bottom: 10px;
+    // display: flex 1 1 auto;
+}
+
+mat-card-header {
+    font-size: var(xxx-large);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25% ;
+    grid-template-rows: 33% 33 33% 1%;
+
+}

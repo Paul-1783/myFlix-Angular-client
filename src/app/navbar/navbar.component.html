@@ -1,0 +1,16 @@
+<p>
+    <mat-toolbar>
+        <h1 id="headline">My Flix Movie App</h1>
+        <button mat-button class="userprofile" aria-label="takes you to the user profile page"
+            (click)="toTheUserProfile()">
+            User-Profile
+        </button>
+        <button mat-button class="backToMovieList userprofile" aria-label="takes you back to the movie list"
+            (click)="backToMovieList()">
+            Back to Movie List
+        </button>
+        <button mat-button class="logout userprofile" aria-label="Logout Button" (click)="logout()">
+            Logout
+        </button>
+    </mat-toolbar>
+</p>
