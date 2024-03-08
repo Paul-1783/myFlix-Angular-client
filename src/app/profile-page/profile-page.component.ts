@@ -22,7 +22,6 @@ export class ProfilePageComponent implements OnInit{
   favMovies: any[] = [];
   movies = [];
   
-  /**@constructs */
   constructor(public fetchApiData: FetchApiDataService,
               public dialog: MatDialog,
               public snackBar: MatSnackBar,
@@ -55,10 +54,8 @@ export class ProfilePageComponent implements OnInit{
     // this.favMovies = this.movies.filter((movie : any) => this.loggedInUser.favorite_movies.includes(movie._id)); //why does loggedInUser.favorite_movies have type 'never'?
   }
 
-  /**
-   * loads login information, builds a payload with updated data, calls the API and verifies the update with a dialog.
-   */
   editUser(): void {
+    console.log("i got here", this.loggedInUser) 
     let user = JSON.parse(localStorage.getItem("user") || "{}");
     let pw = this.loggedInUser.password.length > 0 ? this.loggedInUser.password : user.password;
 
@@ -81,23 +78,19 @@ export class ProfilePageComponent implements OnInit{
     localStorage.setItem("user", this.loggedInUser.username)
   }
 
-  /**
-   * calls delete user API, clears storage and confirms delete with a dialog.
-   */
   deleteUser(): void {
+    console.log("username: ", this.loggedInUser.username)
     this.fetchApiData.deleteUser(this.loggedInUser.username).subscribe(
       result => {
         localStorage.clear();
         this.router.navigate(["welcome"])
+        console.log("result: ", result);
         this.snackBar.open(result, 'Status: ', {
           duration: 2000
         });
       }
     )
   }
-  /**
-   * calls API to delete movie entry from list of favorite movies, updates local storage, reloads favorite list.
-   */
 
   removeFromFavs(movie: any): void {
     this.fetchApiData.deleteMovieFromFavorites(movie._id, this.loggedInUser.username).subscribe(
@@ -115,6 +108,22 @@ export class ProfilePageComponent implements OnInit{
         //   (fav_ids.forEach(elem => { return elem._id }))
       }
     )
+  }
+
+  changePassword(): void {    
+    const payload = {
+      password: this.loggedInUser.password,
+    }
+
+    this.fetchApiData.editUser(this.loggedInUser.username, payload).subscribe(
+      result => {
+        localStorage.setItem('user', JSON.stringify(result));
+        console.log("result: ", result);
+        this.snackBar.open(result, 'OK', {
+          duration: 2000
+        });
+    });
+
   }
 }
 

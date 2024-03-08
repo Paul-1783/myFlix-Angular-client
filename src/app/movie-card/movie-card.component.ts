@@ -13,36 +13,33 @@ export class MovieCardComponent implements OnInit{
   movies: any[] = [];
   data = {name: "", description: ""}
 
-  /** @constructs */
   constructor(public fetchMovies: FetchApiDataService, public dialog: MatDialog, public snackBar : MatSnackBar) { }
   
   ngOnInit(): void {
     this.getMovies();
   }
 
-  /**
-   * fetches movies from API and loads response into array for presentation.
-   */
   getMovies(): void {
     this.fetchMovies.getAllMovies().subscribe((resp: any) => {
       this.movies = resp;
       console.log(this.movies);
+      // return this.movies;
     } )
   }
 
-  /**
-   * opens a dialog with genre details.
-   */
+  openProfileDialog(): void {
+    this.dialog.open(ProfilePageComponent, {
+      width: "280px"
+    })
+  }
+
   openGenreDialog(genre: any): void {
     this.dialog.open(InfoPresentationPageComponent, { width: "280px", data: {
       name: genre.Name,
       description: genre.Description
     }})
   }
-  
-  /**
-   * opens a dialog with details about the director.
-   */
+
   openDirectorDialog(director: any): void {
     this.dialog.open(InfoPresentationPageComponent, { width: "280px", data: {
       name: director.Name,
@@ -50,9 +47,6 @@ export class MovieCardComponent implements OnInit{
     }})
   }
 
-  /**
-   * opens a dialog with a detailed synopsis of the movie.
-   */
   openSynopsisDialog(synopsis: any): void {
     this.dialog.open(InfoPresentationPageComponent, {
       width: "280px", data: {
@@ -61,9 +55,6 @@ export class MovieCardComponent implements OnInit{
     }})
   }
 
-  /**
-   * adds with locally stored user name the movie to list of his/her favorite movies int the database.
-   */
   addToFavs(movie: any): void{
     let user = JSON.parse(localStorage.getItem("user")|| "{}");
     if (user) {
