@@ -40,6 +40,6 @@ export class NavbarComponent  implements OnDestroy{
   }
 
   ngOnDestroy(): void {
-    
+    this.subscription.unsubscribe();
   }
 }
