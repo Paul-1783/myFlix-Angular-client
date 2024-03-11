@@ -38,6 +38,7 @@ export class NavbarComponent  implements OnDestroy{
       this.router.navigate(['profile']);      
     }
   }
+  //try it
 
   ngOnDestroy(): void {
         this.subscription.unsubscribe();    
